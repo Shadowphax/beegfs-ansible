@@ -1,0 +1,23 @@
+[leader]
+bgfs-01 ansible_host=192.168.100.9 ansible_user=centos
+
+[follower]
+bgfs-02 ansible_host=192.168.100.4 ansible_user=centos
+
+[cluster:children]
+leader
+follower
+
+[cluster_beegfs_mgmt:children]
+leader
+
+[cluster_beegfs_mds:children]
+leader
+
+[cluster_beegfs_oss:children]
+leader
+follower
+
+[cluster_beegfs_client:children]
+leader
+follower
